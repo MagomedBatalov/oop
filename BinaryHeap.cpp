@@ -39,7 +39,8 @@ public:
                 swap(v[(parent_pos + 1) * 2], v[(parent_pos + 1) * 2 - 1]);
         }
         return true;
-    }
+    } 
+    
     bool removeNode(const T& o)
     {
         int indx = 0;
@@ -125,6 +126,8 @@ template<class T>
     }
     return true;
 }
+
+
 template<class T>
 bool testHeapDell(const vector<T>& initial, const T& value, const vector<T>& expected)
 {
@@ -146,6 +149,8 @@ bool testHeapDell(const vector<T>& initial, const T& value, const vector<T>& exp
     }
     return true;
 }
+
+
 template<class T>
 class iterator
 {
@@ -185,6 +190,7 @@ public:
 const T& operator*() const { return v[idx]; }
     T& operator*() { return v[idx]; }
 };
+
 
 template<class T>
 bool testHeapIter(const vector<T>& initial, int const& indx, const vector<T>& expected)
