@@ -46,12 +46,16 @@ public:
         int indx = 0;
         while (indx < v.size() && v[indx] != o)
             indx++;
+        
         if (indx == v.size())
             return false;
+        
         v[indx] = v[v.size() - 1];
         v.pop_back();
+        
         if (indx == v.size())
             return true;
+        
         if (indx > 0 && v[indx] > v[(indx + 1) / 2 - 1])
         {
             while (indx > 0 && v[indx] > v[(indx + 1) / 2 - 1])
