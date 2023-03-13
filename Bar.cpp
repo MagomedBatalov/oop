@@ -4,13 +4,14 @@
 
 using namespace std;
 
+//Набор напитков
 class Drink {
 private:
 	string name;
 	float price;
 	size_t _count;
 public:
-	Drink() {
+	Drink() { 
 		name = "";
 		price = 0;
 		_count = 0;
@@ -31,6 +32,7 @@ public:
 	}
 };
 
+//класс гость
 class Visitor {
 private:
 	int ID;
@@ -60,7 +62,7 @@ public:
 
 class Bar {
 private:
-	map<Visitor, Drink> Order;
+	map<Visitor, Drink> Order; //map - ассоциативный массив [ключ - значение].
 public:
 	void order(const Visitor& v, const Drink& d) {
 		Order[v] = d;
