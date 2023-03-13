@@ -6,13 +6,15 @@ using namespace std;
 
 // Объявление шаблона, В данном случае шаблонной функции. Функция подстраивается и изменякется в зависимости от того какой тип данных в нее входит. 
 
+//функция копирования одного массива в другой
 template<typename T>
-void copy_array(const T* from, T* to, size_t count) {
+void copy_array(const T* from, T* to, size_t count) { // 
     for (size_t i = 0; i < count; i++) {
         to[i] = from[i];
     }
 }
 
+// функци вывода массива
 template<typename T>
 void print_array(const T* parr, size_t count) {
     for (size_t i = 0; i < count; i++) {
@@ -21,7 +23,7 @@ void print_array(const T* parr, size_t count) {
     cout << endl;
 }
 
-
+//поиск индекса, принадлежащему минимальному элементу массива
 template<typename T>
 size_t findmin(const T* parr, size_t count) {
     size_t min = 0;
