@@ -4,6 +4,7 @@
 
 using namespace std;
 
+//Шаблонная функция, выводящая массив на экран
 template<typename T>
 void PrintVector(const vector<T>& v) {
 	for (const auto& item : v) {
@@ -12,7 +13,7 @@ void PrintVector(const vector<T>& v) {
 	cout << endl;
 }
 
-//1
+//Суммирует матрицу 
 vector<int> sum(const vector<vector<int>>& v) {
 	vector<int> result;
 	for (const auto& item : v) {
