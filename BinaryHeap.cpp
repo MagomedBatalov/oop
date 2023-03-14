@@ -4,36 +4,37 @@
 
 using namespace std;
 
+//Бинарная куча. 
 template <class T>
 class HeapOverArray
 {
     vector<T> v;
 public:
-    vector<T> getVector() { return v; }
+    vector<T> getVector() { return v; } 
     HeapOverArray() {}
-     HeapOverArray(vector<T> a) { v = a; }
+     HeapOverArray(vector<T> a) { v = a; } 
     bool addNode(const T& o)
     {
         size_t pos = v.size();
-        if (pos == 0)
+        if (pos == 0) //если куча пустая, то пушим первый элемент
         {
             v.push_back(o);
             return true;
         }
-         int parent_pos = (pos + 1) / 2 - 1;
-        v.push_back(o);
-        while (parent_pos >= 0 && o > v[parent_pos])
+         int parent_pos = (pos + 1) / 2 - 1; //вычилеие позиции родителя 
+        v.push_back(o); //пушим новый элемент в конец кучи
+        while (parent_pos >= 0 && o > v[parent_pos]) //вертикальная сортировака кучи пока есть родитель и значение элемента больше родителя
         {
             swap(v[pos], v[parent_pos]);
             pos = parent_pos;
             parent_pos = ((pos + 1) / 2) - 1;
         }
-        if (pos == 0)
+        if (pos == 0) //если пушимый элемент стал основанием кучи, то мы сортируем горизонтально
         {
             if (v[1] > v[2])
                 swap(v[1], v[2]);
         }
-        else
+        else //иначе сортируем на уровень ниже, чем тот в котором лежит элемент о
         {
             if (v[(parent_pos + 1) * 2 - 1] > v[(parent_pos + 1) * 2])
                 swap(v[(parent_pos + 1) * 2], v[(parent_pos + 1) * 2 - 1]);
@@ -41,29 +42,29 @@ public:
         return true;
     } 
     
-    bool removeNode(const T& o)
+    bool removeNode(const T& o) //удаление узла
     {
         int indx = 0;
-        while (indx < v.size() && v[indx] != o)
+        while (indx < v.size() && v[indx] != o) //поиск удаляемого элемента
             indx++;
         
-        if (indx == v.size())
+        if (indx == v.size())//элемент не найден
             return false;
         
-        v[indx] = v[v.size() - 1];
+        v[indx] = v[v.size() - 1];//удаление элемента
         v.pop_back();
         
-        if (indx == v.size())
+        if (indx == v.size())//если искомый элемент оказался послежним, то струкра не нарушена - можно оставить как есть
             return true;
         
-        if (indx > 0 && v[indx] > v[(indx + 1) / 2 - 1])
+        if (indx > 0 && v[indx] > v[(indx + 1) / 2 - 1]) //иначе сортировка
         {
-            while (indx > 0 && v[indx] > v[(indx + 1) / 2 - 1])
+            while (indx > 0 && v[indx] > v[(indx + 1) / 2 - 1])//свапаем родителей и потомков до тех пр, пока не отсортируется  
             {
                 swap(v[indx], v[(indx + 1) / 2 - 1]);
                 indx = (indx + 1) / 2 - 1;
             }
-            if (indx == 0)
+            if (indx == 0) //если удаленный элемент оказался первым, возращаем 1
                 return true;
             if (v[indx] > v[((indx + 1) / 2 - 1) * 2 + 1])
             {
