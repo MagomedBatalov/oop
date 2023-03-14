@@ -74,9 +74,9 @@ public:
         }
         else
         {
-            while (indx * 2 + 2 < v.size())
+            while (indx * 2 + 2 < v.size()) //сортировка
             {
-                if ((v[indx] < v[indx * 2 + 2]) && (v[indx] < v[indx * 2 + 1]))
+                if ((v[indx] < v[indx * 2 + 2]) && (v[indx] < v[indx * 2 + 1])) //проверка вертикальной сортировки
                 {
                     if (v[indx * 2 + 2] > v[indx * 2 + 1])
                     {
@@ -89,6 +89,8 @@ public:
                         indx = indx * 2 + 1;
                     }
                 }
+                //самая большая величина ставиться на место indx из треугольника
+                
                 else if (v[indx] < v[indx * 2 + 2])
                 {
                     swap(v[indx], v[indx * 2 + 2]);
