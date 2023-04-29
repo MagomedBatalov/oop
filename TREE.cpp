@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class Tree;
+class Tree; // объявляем о существовании класса Tree? чтобы класс Node увидел его.
 class Node {
     Node *left, *right, *parent;
     friend class Tree;
